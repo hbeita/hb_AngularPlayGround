@@ -1,7 +1,14 @@
-(function() {
-  var app = angular.module("myApp", []);
+/*
+Modules on angular
+1. Create the Module 
+2. Register my components (controllers and so) in the module
+3. I tell Angular to use that module
 
-  var MainController = function($scope, $http) {
+*/
+(function() {
+  var app = angular.module("myApp", []); // Step 1
+
+  var MainController = function($scope, $http) { // Step 2
 
     var onUserComplete = function(response) {
       $scope.user = response.data;
@@ -18,6 +25,7 @@
 
   }
 
-  app.controller("MainController", MainController);
+  // Step 3 + Set the ng-app on the HTML angular init statement and pass the module
+  app.controller("MainController", ["$scope", "$http", MainController]);
 
 }());
