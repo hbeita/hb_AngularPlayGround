@@ -12,10 +12,16 @@ Modules on angular
 
     var onUserComplete = function(response) {
       $scope.user = response.data;
+      $http.get($scope.user.repos_url)
+        .then(onRepos, onError);
     };
 
+    var onRepos = function(response) {
+      $scope.repos = response.data;
+    }
+
     var onError = function(response) {
-      $scope.error = response.data;
+      $scope.error = "Could not fetch the data";
     };
 
     $scope.search = function(username) {
@@ -25,6 +31,7 @@ Modules on angular
 
     $scope.username = "angular"
     $scope.message = "Github user"
+    $scope.sortBy = "-stargazers_count"
 
   }
 
