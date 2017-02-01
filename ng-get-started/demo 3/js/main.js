@@ -18,10 +18,13 @@ Modules on angular
       $scope.error = response.data;
     };
 
-    $http.get("http://api.github.com/users/hbeita")
-      .then(onUserComplete, onError);
+    $scope.search = function(username) {
+      $http.get("http://api.github.com/users/" + username)
+        .then(onUserComplete, onError);
+    };
 
-    $scope.message = "Hello"
+    $scope.username = "angular"
+    $scope.message = "Github user"
 
   }
 
