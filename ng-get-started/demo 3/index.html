@@ -17,35 +17,8 @@
     <input type="submit" value="search">
   </form>
 
-  <div ng-show="user">
-    <h2>{{user.name}}</h2>
-    <img ng-src="http://www.gravatar.com/avatar/{{user.gravatar_id}}" alt="">
-    <p>Order:</p>
-    <select ng-model="sortOrder">
-      <option value="+name">Name</option>
-      <option value="-stargazers_count">Starts</option>
-      <option value="language">Language</option>
-    </select>
-  </div>
-
-
-  <table ng-show="user">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Starts</th>
-        <th>Language</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="repo in repos | orderBy:sortOrder">
-        <td>{{repo.name}}</td>
-        <td>{{repo.stargazers_count | number}}</td>
-        <td>{{repo.language}}</td>
-      </tr>
-    </tbody>
-  </table>
-
 </body>
+
+<div ng-include="'user_details.html'" ng-show="user"></div>
 
 </html>
